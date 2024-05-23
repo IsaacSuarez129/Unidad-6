@@ -1,0 +1,89 @@
+#SUAREZ CANCHE ISAAC MOISES 3SB
+
+#EJERCICIO SECUENCIAL
+class Clientes:
+    def __init__(self, id_cliente, nombre):
+        self.id_cliente = id_cliente
+        self.nombre = nombre
+
+class Tienda:
+    def __init__(self):
+        self.clientes = []
+
+    def agregar_cliente(self, cliente):
+        self.clientes.append(cliente)
+
+    def buscar_cliente_por_id(self, id_cliente):
+        for cliente in self.clientes:
+            if cliente.id_cliente == id_cliente:
+                return cliente
+        return None
+
+tienda = Tienda()
+tienda.agregar_cliente(Clientes(1, "Alexander"))
+tienda.agregar_cliente(Clientes(2, "Isaac"))
+tienda.agregar_cliente(Clientes(3, "Alejandra"))
+tienda.agregar_cliente(Clientes(4, "David"))
+tienda.agregar_cliente(Clientes(5, "Santy"))
+tienda.agregar_cliente(Clientes(6, "Pedro"))
+tienda.agregar_cliente(Clientes(7, "Luis"))
+tienda.agregar_cliente(Clientes(8, "Andres"))
+tienda.agregar_cliente(Clientes(9, "Moises"))
+tienda.agregar_cliente(Clientes(10, "Oscar"))
+
+cliente_buscado = tienda.buscar_cliente_por_id(9)
+if cliente_buscado:
+    print(f"Cliente encontrado: {cliente_buscado.nombre}")
+else:
+    print("Cliente no encontrado")
+
+
+#EJERCICIO BINARIA 
+class Aparatos_electronicos:
+    def __init__(self, nombre, precio):
+        self.nombre = nombre
+        self.precio = precio
+
+    def __repr__(self):
+        return f"{self.nombre}: ${self.precio}"
+
+class Tienda_Electronica:
+    def __init__(self):
+        self.productos = []
+
+    def agregar_producto(self, producto):
+        self.productos.append(producto)
+        self.productos.sort(key=lambda x: x.precio) 
+
+    def buscar_producto_por_precio(self, precio):
+        return self.busqueda_binaria(precio)
+
+    def busqueda_binaria(self, precio):
+        izquierda, derecha = 0, len(self.productos) - 1
+        while izquierda <= derecha:
+            medio = (izquierda + derecha) // 2
+            if self.productos[medio].precio == precio:
+                return self.productos[medio]
+            elif self.productos[medio].precio < precio:
+                izquierda = medio + 1
+            else:
+                derecha = medio - 1
+        return None
+
+tienda = Tienda_Electronica()
+tienda.agregar_producto(Aparatos_electronicos("Laptop", 1200))
+tienda.agregar_producto(Aparatos_electronicos("Smartphone", 800))
+tienda.agregar_producto(Aparatos_electronicos("Tablet", 300))
+tienda.agregar_producto(Aparatos_electronicos("Monitor", 150))
+tienda.agregar_producto(Aparatos_electronicos("Mouse", 120))
+tienda.agregar_producto(Aparatos_electronicos("Audifonos", 250))
+tienda.agregar_producto(Aparatos_electronicos("Base enfriadora para laptop", 500))
+tienda.agregar_producto(Aparatos_electronicos("Cargador para Smartphone", 50))
+tienda.agregar_producto(Aparatos_electronicos("Teclado", 450))
+precio_a_buscar = 50
+producto_encontrado = tienda.buscar_producto_por_precio(precio_a_buscar)
+
+if producto_encontrado:
+    print(f"Producto encontrado: {producto_encontrado}")
+else:
+    print(f"No se encontró un producto con el precio ${precio_a_buscar}")
