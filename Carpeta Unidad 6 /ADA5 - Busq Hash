@@ -1,0 +1,58 @@
+#Suarez Canche Isaac Moises 3SB
+
+#Ejercicio 1
+class Biblioteca:
+    def __init__(self):
+        self.libros = {}
+
+    def agregar_libro(self, titulo, autor):
+        codigo = hash(titulo)
+        self.libros[codigo] = {'titulo': titulo, 'autor': autor}
+
+    def buscar_libro(self, titulo):
+        codigo = hash(titulo)
+        return self.libros.get(codigo)
+
+biblioteca = Biblioteca()
+biblioteca.agregar_libro("La Odisea", "Homero")
+biblioteca.agregar_libro("Don Quijote", "Miguel de Cervantes")
+biblioteca.agregar_libro("Cien años de soledad", "Gabriel García Márquez")
+biblioteca.agregar_libro("1984", "George Orwell")
+biblioteca.agregar_libro("El señor de los anillos", "J.R.R. Tolkien")
+biblioteca.agregar_libro("Harry Potter y la piedra filosofal", "J.K. Rowling")
+biblioteca.agregar_libro("Matar a un ruiseñor", "Harper Lee")
+biblioteca.agregar_libro("Orgullo y prejuicio", "Jane Austen")
+biblioteca.agregar_libro("Crimen y castigo", "Fyodor Dostoevsky")
+
+print(biblioteca.buscar_libro("Matar a un ruiseñor"))
+print(biblioteca.buscar_libro("1984"))
+
+
+#Ejercicio 2
+class Datos_de_Usuarios:
+    def __init__(self):
+        self.usuarios = {}
+
+    def agregar(self, nombre_usuario, datos):
+        codigo = hash(nombre_usuario)
+        self.usuarios[codigo] = datos
+
+    def buscar(self, nombre_usuario):
+        codigo = hash(nombre_usuario)
+        return self.usuarios.get(codigo)
+
+base_de_datos = Datos_de_Usuarios()
+base_de_datos.agregar("usuario 1", {"nombre": "Juan", "apellido": "Pérez"})
+base_de_datos.agregar("usuario 2", {"nombre": "María", "apellido": "González"})
+base_de_datos.agregar("usuario 3", {"nombre": "Carlos", "apellido": "Martínez"})
+base_de_datos.agregar("usuario 4", {"nombre": "Laura", "apellido": "Rodríguez"})
+base_de_datos.agregar("usuario 5", {"nombre": "Pedro", "apellido": "López"})
+base_de_datos.agregar("usuario 6", {"nombre": "Ana", "apellido": "Sánchez"})
+base_de_datos.agregar("usuario 7", {"nombre": "Diego", "apellido": "Gómez"})
+base_de_datos.agregar("usuario 8", {"nombre": "Sara", "apellido": "Fernández"})
+base_de_datos.agregar("usuario 9", {"nombre": "Jorge", "apellido": "Díaz"})
+base_de_datos.agregar("usuario 10", {"nombre": "Lucía", "apellido": "Alvarez"})
+
+print(base_de_datos.buscar("usuario 3"))
+print(base_de_datos.buscar("usuario 7"))
+print(base_de_datos.buscar("usuario 9"))
